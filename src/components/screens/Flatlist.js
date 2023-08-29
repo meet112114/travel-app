@@ -15,8 +15,7 @@ const FlatListSrc = () => {
         useEffect(() => {
           axios.get(url)
         .then(function(response) {
-            // handle response
-            console.log(response.data)
+            // handle response            
             setData(response.data.placedata);
         }).catch(function(error) {
            console.log(error)
@@ -26,14 +25,14 @@ const FlatListSrc = () => {
         
          
          
-
+        
 
     const renderItem = ({item}) => (
         <TouchableOpacity onPress={()=> navigation.navigate("placeinfo", {item})}>
             <View>
             <View style={styles.flatlistcontainer}>
-                        
-                        <Image source={{ uri: item.imageUrl }} style={styles.imgstyle} />
+                            
+                        <Image source={{uri : item.image}} style={styles.imgstyle} />
                         <View style={styles.infostyle}>
 
                             <Text style={styles.titlestyle}>{item.title}</Text>    
@@ -47,7 +46,7 @@ const FlatListSrc = () => {
     );
         
     return(                  
-            <FlatList data={data} renderItem={renderItem} keyExtractor={item => item.id.toString()}/>
+            <FlatList data={data} renderItem={renderItem} keyExtractor={item => item._id.toString()}/>
     );
 
 };

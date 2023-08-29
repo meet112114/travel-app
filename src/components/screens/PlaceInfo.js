@@ -3,17 +3,24 @@ import React from 'react'
 import { Linking } from 'react-native';
 import ImageSlider from './ImageSlider';
 
+
 const PlaceInfo = ({route}) => {
     const { item } = route.params;    
+
+  const imglinks = item.images;
+  console.log(item.images);
+  const imgs = item.images.split(",");
+    
+
   return (
     <View style={styles.mainbody}>
       <Text style={styles.maintitle}>{item.title} </Text>
-      <Image source={{ uri: item.imageUrl}} style={styles.imgstyle} />
+      <Image source={{ uri: item.image}} style={styles.imgstyle} />
       <Text style={styles.descriptionstyle}>{item.description}</Text>
-      <Text style={styles.locaions} onPress={() => Linking.openURL('https://www.google.com/maps/@'+item.location+',12.78z?entry=ttu')}>
+      <Text style={styles.locaions} onPress={() => Linking.openURL(item.location)}>
       Click For Locaion
       </Text>
-      <ImageSlider key={item.id} images={item.images} />
+      <ImageSlider key={item._id} images={imgs} />
     </View>
   )
 }
