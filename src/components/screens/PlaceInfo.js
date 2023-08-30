@@ -7,8 +7,7 @@ import ImageSlider from './ImageSlider';
 const PlaceInfo = ({route}) => {
     const { item } = route.params;    
 
-  const imglinks = item.images;
-  console.log(item.images);
+  const imglinks = item.images; 
   const imgs = item.images.split(",");
     
 
