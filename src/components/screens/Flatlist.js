@@ -1,203 +1,228 @@
-import { FlatList , StyleSheet , View ,Text , Image , TouchableOpacity ,  TextInput , ScrollView, ScrollViewComponent } from "react-native";
-import React, { useRef }    from "react";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  ScrollView,
+  ScrollViewComponent,
+} from "react-native";
+import React, { useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Appbar, Searchbar, Card, Title, Paragraph } from 'react-native-paper';
+import { Appbar } from "react-native-paper";
 
 const FlatListSrc = () => {
-    
-    
-    const url = "http://192.168.1.106:5000/getdata" ;
-    const navigation = useNavigation();
-    const [search, setSearch] = useState('');
-    const [data, setdata] = useState(data);
-    const [oldData , setOldData] = useState();
-   
-    
-        useEffect(() => {
-          axios.get(url)
-        .then(function(response) {
-            // handle response            
-            setdata(response.data.placedata);
-            setOldData(response.data.placedata);
-        }).catch(function(error) {
-           console.log(error)
-        });
+  const url = "http://192.168.208.183:5000/getdata";
+  const navigation = useNavigation();
+  const [search, setSearch] = useState("");
+  const [data, setdata] = useState(data);
+  const [oldData, setOldData] = useState();
 
-        }, [])             
-           
-    const onSearch = (text) => {
-        if(text=="" ){
-            setdata(oldData);
-        }else{            
-            let templist = data.filter(item => {
-                return item.title.toLowerCase().indexOf(text.toLowerCase()) > -1 ;
-                    })
-                    setdata(templist);
-        }
-        
-    };    
+  useEffect(() => {
+    axios
+      .get(url)
+      .then(function (response) {
+        // handle response
+        setdata(response.data.placedata);
+        setOldData(response.data.placedata);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
-    const renderItem = ({item}) => (
-        <TouchableOpacity onPress={()=> navigation.navigate("placeinfo", {item})}>
-            <View>
-            <View style={styles.flatlistcontainer}>          
+  const onSearch = (text) => {
+    if (text == "") {
+      setdata(oldData);
+    } else {
+      let templist = data.filter((item) => {
+        return item.title.toLowerCase().indexOf(text.toLowerCase()) > -1;
+      });
+      setdata(templist);
+    }
+  };
 
-                <Image source={{uri : item.image}} style={styles.imgstyle} />
-                        <View style={styles.infostyle}>
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => navigation.navigate("placeinfo", { item })}
+    >
+      <View>
+        <View style={styles.flatlistcontainer}>
+          <Image source={{ uri: item.image }} style={styles.imgstyle} />
+          <View style={styles.infostyle}>
+            <Text style={styles.titlestyle}>{item.title}</Text>
+            <Text style={styles.descriptionstyle}>{item.description}</Text>
+          </View>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
 
-                            <Text style={styles.titlestyle}>{item.title}</Text>    
-                            <Text style={styles.descriptionstyle}>{item.description}</Text>
-
-                        </View>                                
-                                     
-            </View>
-            </View>
-        </TouchableOpacity>
-    );
-        
-    return(    
-        <View style={styles.mbody}>       
-            <Appbar.Header>            
-            <View style={styles.searchcontainer}>
-            <Appbar.Content  />
-            <TextInput
+  return (
+    <View style={styles.mbody}>
+      <Appbar.Header>
+        <View style={styles.searchcontainer}>
+          <Appbar.Content />
+          <TextInput
             style={styles.searchInput}
             placeholder="Search by title"
             value={search}
-            onChangeText={txt => {        
-                onSearch(txt);
-                setSearch(txt);
-            }}            
-            />    
-            </View>    
-            </Appbar.Header>
-       
-        <ScrollView>
-            <View style={styles.catcon}>
-               
-                    <View style={styles.row}>
-                    <TouchableOpacity>
-                        <View style={styles.catconobj} >
-                            <Text>hii</Text>
-                        </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                        <View style={styles.catconobj} >
-                            <Text>hii</Text>
-                        </View>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.row}>
-                    <TouchableOpacity>
-                        <View style={styles.catconobj} >
-                            <Text>hii</Text>
-                        </View>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                        <View style={styles.catconobj} >
-                            <Text>hii</Text>
-                        </View>
-                        </TouchableOpacity>
-                    </View>
-                    
-                
-            </View>
-           <View style={styles.maincontainer} > 
-             
-            <FlatList nestedScrollEnabled 
-                 blurRadius={90}
-                 data={data}
-                 renderItem={renderItem}
-                 keyExtractor={item => item._id.toString()}
-                 />
-            </View>
-        </ScrollView>   
-        
-        </View>     
-        
-    );
+            onChangeText={(txt) => {
+              onSearch(txt);
+              setSearch(txt);
+            }}
+          />
+        </View>
+      </Appbar.Header>
 
+      <ScrollView>
+        <View style={styles.catcon}>
+          <View style={styles.row}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("categoryscreen", {
+                  cat: "mountains",
+                  data,
+                })
+              }
+            >
+              <View style={styles.catconobj}>
+                <Text>hii</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("categoryscreen", {
+                  cat: "hill-station",
+                  data,
+                })
+              }
+            >
+              <View style={styles.catconobj}>
+                <Text>hii</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("categoryscreen", { cat: "water", data })
+              }
+            >
+              <View style={styles.catconobj}>
+                <Text>hii</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("categoryscreen", {
+                  cat: "monuments",
+                  data,
+                })
+              }
+            >
+              <View style={styles.catconobj}>
+                <Text>hii</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.maincontainer}>
+          <FlatList
+            nestedScrollEnabled
+            blurRadius={90}
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item) => item._id.toString()}
+          />
+        </View>
+      </ScrollView>
+    </View>
+  );
 };
 
 export default FlatListSrc;
 
 const styles = StyleSheet.create({
-    row:{
-        flexDirection:'row',
-    },
-    catconobj:{
-        borderWidth:1,
-        width: 100,
-        height: 100,
-        marginHorizontal: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#E0E0E0',
-        borderRadius: 10,
-    },
-    catcon:{
-        backgroundColor: '#E0E0E0',        
-        marginHorizontal: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    mbody:{
-        backgroundColor:"#E0E0E0",
-    },
-    searchcontainer:{        
-        backgroundColor:"#FDFDFD",
-        width:390
-    },
-    maincontainer:{
-        marginTop:10,
-    },
-    container: {
-        flex: 1,
-        padding: 16,
-    },
-    searchInput: {
-        backgroundColor:"#A5A5A5",
-        marginLeft:110,        
-        width:270,
-        padding: 10,
-        marginBottom:7,          
-        borderRadius: 15,
-    },    
-    flatlistcontainer: {            
-        backgroundColor:"#EDEDED",      
-        borderRadius:20 ,
-        marginRight:10,   
-        height:120,
-        width:370,
-        flexDirection:"row",
-        paddingTop:10,
-        paddingBottom:30,
-        marginLeft:10,
-        marginBottom:10    },   
-    imgstyle:{
-        marginTop:20,
-        borderRadius:10,
-        height:95,
-        width:80,
-        alignSelf:"center",
-        marginLeft:10
-    },
-    infostyle:{
-        marginTop:10,
-        marginLeft:15,
-        width:300
-    },
-    titlestyle:{
-        textTransform:"capitalize",
-        color:"black",
-        fontSize:20,
-        fontWeight:"500"
-    },
-    descriptionstyle:{
-        color:"grey",
-        fontSize:12,
-        fontWeight:"300"
-    }
-})
+  row: {
+    flexDirection: "row",
+  },
+  catconobj: {
+    borderWidth: 1,
+    width: 100,
+    height: 100,
+    marginHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E0E0E0",
+    borderRadius: 10,
+  },
+  catcon: {
+    backgroundColor: "#E0E0E0",
+    marginHorizontal: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  mbody: {
+    backgroundColor: "#E0E0E0",
+  },
+  searchcontainer: {
+    backgroundColor: "#FDFDFD",
+    width: 390,
+  },
+  maincontainer: {
+    marginTop: 10,
+  },
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+  searchInput: {
+    backgroundColor: "#A5A5A5",
+    marginLeft: 110,
+    width: 270,
+    padding: 10,
+    marginBottom: 7,
+    borderRadius: 15,
+  },
+  flatlistcontainer: {
+    backgroundColor: "#EDEDED",
+    borderRadius: 20,
+    marginRight: 10,
+    height: 120,
+    width: 370,
+    flexDirection: "row",
+    paddingTop: 10,
+    paddingBottom: 30,
+    marginLeft: 10,
+    marginBottom: 10,
+  },
+  imgstyle: {
+    marginTop: 20,
+    borderRadius: 10,
+    height: 95,
+    width: 80,
+    alignSelf: "center",
+    marginLeft: 10,
+  },
+  infostyle: {
+    marginTop: 10,
+    marginLeft: 15,
+    width: 300,
+  },
+  titlestyle: {
+    textTransform: "capitalize",
+    color: "black",
+    fontSize: 20,
+    fontWeight: "500",
+  },
+  descriptionstyle: {
+    color: "grey",
+    fontSize: 12,
+    fontWeight: "300",
+  },
+});
