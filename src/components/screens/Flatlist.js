@@ -67,15 +67,21 @@ const FlatListSrc = () => {
       <Appbar.Header>
         <View style={styles.searchcontainer}>
           <Appbar.Content />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search by title"
-            value={search}
-            onChangeText={(txt) => {
-              onSearch(txt);
-              setSearch(txt);
-            }}
-          />
+          <View style={styles.topbar}>
+            <Image
+              source={require("../icons/micon.png")}
+              style={styles.micon}
+            />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search by Name"
+              value={search}
+              onChangeText={(txt) => {
+                onSearch(txt);
+                setSearch(txt);
+              }}
+            />
+          </View>
         </View>
       </Appbar.Header>
 
@@ -91,7 +97,10 @@ const FlatListSrc = () => {
               }
             >
               <View style={styles.catconobj}>
-                <Text>hills</Text>
+                <Image
+                  source={require("../icons/hills.png")}
+                  style={styles.icon}
+                />
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -103,7 +112,10 @@ const FlatListSrc = () => {
               }
             >
               <View style={styles.catconobj}>
-                <Text>water</Text>
+                <Image
+                  source={require("../icons/water.png")}
+                  style={styles.icon}
+                />
               </View>
             </TouchableOpacity>
           </View>
@@ -117,7 +129,10 @@ const FlatListSrc = () => {
               }
             >
               <View style={styles.catconobj}>
-                <Text>historical</Text>
+                <Image
+                  source={require("../icons/histo.png")}
+                  style={styles.icon}
+                />
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -129,7 +144,10 @@ const FlatListSrc = () => {
               }
             >
               <View style={styles.catconobj}>
-                <Text>famous</Text>
+                <Image
+                  source={require("../icons/famous.png")}
+                  style={styles.icon}
+                />
               </View>
             </TouchableOpacity>
           </View>
@@ -151,6 +169,18 @@ const FlatListSrc = () => {
 export default FlatListSrc;
 
 const styles = StyleSheet.create({
+  topbar: {
+    flexDirection: "row",
+  },
+  micon: {
+    height: 60,
+    width: 85,
+  },
+  icon: {
+    height: 100,
+    width: 150,
+    resizeMode: "contain",
+  },
   row: {
     flexDirection: "row",
   },
@@ -177,7 +207,7 @@ const styles = StyleSheet.create({
   },
   searchcontainer: {
     backgroundColor: "#FDFDFD",
-    width: 390,
+    width: 220,
   },
   maincontainer: {
     marginTop: 10,
@@ -188,8 +218,8 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     backgroundColor: "#A5A5A5",
-    marginLeft: 110,
-    width: 270,
+    marginLeft: 50,
+    width: 240,
     padding: 10,
     marginBottom: 7,
     borderRadius: 15,
