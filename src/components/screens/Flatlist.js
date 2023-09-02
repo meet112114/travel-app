@@ -85,48 +85,51 @@ const FlatListSrc = () => {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("categoryscreen", {
-                  cat: "mountains",
+                  cat: "hills",
                   data,
                 })
               }
             >
               <View style={styles.catconobj}>
-                <Text>hii</Text>
+                <Text>hills</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("categoryscreen", {
-                  cat: "hill-station",
+                  cat: "water",
                   data,
                 })
               }
             >
               <View style={styles.catconobj}>
-                <Text>hii</Text>
+                <Text>water</Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style={styles.row}>
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("categoryscreen", { cat: "water", data })
-              }
-            >
-              <View style={styles.catconobj}>
-                <Text>hii</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
                 navigation.navigate("categoryscreen", {
-                  cat: "monuments",
+                  cat: "historical-place",
                   data,
                 })
               }
             >
               <View style={styles.catconobj}>
-                <Text>hii</Text>
+                <Text>historical</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("categoryscreen", {
+                  cat: "famous",
+                  data,
+                })
+              }
+            >
+              <View style={styles.catconobj}>
+                <Text>famous</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -152,8 +155,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   catconobj: {
+    marginBottom: 15,
     borderWidth: 1,
-    width: 100,
+    width: 150,
     height: 100,
     marginHorizontal: 10,
     justifyContent: "center",
@@ -162,6 +166,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   catcon: {
+    marginTop: 10,
     backgroundColor: "#E0E0E0",
     marginHorizontal: 10,
     justifyContent: "center",

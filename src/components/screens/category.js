@@ -16,8 +16,13 @@ const Category = ({ route }) => {
   const { cat } = route.params;
   const { data } = route.params;
   const [search, setSearch] = useState("");
-  const [data1, setdata1] = useState(data);
-  const [oldData, setOldData] = useState(data);
+
+  let tempdata = data.filter((item) => {
+    return item.category.includes(cat);
+  });
+
+  const [data1, setdata1] = useState(tempdata);
+  const [oldData, setOldData] = useState(tempdata);
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
