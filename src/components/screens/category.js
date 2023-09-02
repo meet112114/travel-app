@@ -16,7 +16,6 @@ const Category = ({ route }) => {
   const { cat } = route.params;
   const { data } = route.params;
   const [search, setSearch] = useState("");
-
   let tempdata = data.filter((item) => {
     return item.category.includes(cat);
   });
@@ -73,6 +72,19 @@ const Category = ({ route }) => {
           </View>
         </View>
       </Appbar.Header>
+      <View style={styles.midcon}>
+        <Text
+          style={{
+            fontWeight: 700,
+            color: "grey",
+            fontSize: 16,
+            textTransform: "capitalize",
+            alignSelf: "center",
+          }}
+        >
+          {cat}
+        </Text>
+      </View>
 
       <View style={styles.maincontainer}>
         <FlatList
@@ -87,6 +99,13 @@ const Category = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  midcon: {
+    marginTop: 15,
+    justifyContent: "center",
+    height: 30,
+    width: 390,
+    backgroundColor: "white",
+  },
   row: {
     flexDirection: "row",
   },

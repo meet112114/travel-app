@@ -123,7 +123,7 @@ const FlatListSrc = () => {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("categoryscreen", {
-                  cat: "historical-place",
+                  cat: "historical",
                   data,
                 })
               }
@@ -152,6 +152,18 @@ const FlatListSrc = () => {
             </TouchableOpacity>
           </View>
         </View>
+        <View style={styles.midcon}>
+          <Text
+            style={{
+              fontWeight: 700,
+              color: "grey",
+              fontSize: 16,
+              alignSelf: "center",
+            }}
+          >
+            All Places
+          </Text>
+        </View>
         <View style={styles.maincontainer}>
           <FlatList
             nestedScrollEnabled
@@ -169,10 +181,17 @@ const FlatListSrc = () => {
 export default FlatListSrc;
 
 const styles = StyleSheet.create({
+  midcon: {
+    justifyContent: "center",
+    height: 30,
+    width: 390,
+    backgroundColor: "white",
+  },
   topbar: {
     flexDirection: "row",
   },
   micon: {
+    marginLeft: 10,
     height: 60,
     width: 85,
   },
@@ -217,7 +236,7 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     backgroundColor: "#A5A5A5",
-    marginLeft: 50,
+    marginLeft: 40,
     width: 240,
     padding: 10,
     height: 45,
@@ -241,7 +260,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderRadius: 10,
     height: 95,
-    width: 80,
+    width: 90,
     alignSelf: "center",
     marginLeft: 10,
   },
