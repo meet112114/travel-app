@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "travel",
+    "name": "Landmark explorer",
     "slug": "travel",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/components/icons/micon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

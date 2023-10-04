@@ -16,7 +16,7 @@ import axios from "axios";
 import { Appbar } from "react-native-paper";
 
 const FlatListSrc = () => {
-  const url = "http://192.168.208.183:5000/getdata";
+  const url = "https://travel-app-api-xbrs.onrender.com/getdata";
   const navigation = useNavigation();
   const [search, setSearch] = useState("");
   const [data, setdata] = useState(data);
@@ -62,8 +62,10 @@ const FlatListSrc = () => {
     </TouchableOpacity>
   );
 
-  return (
-    <View style={styles.mbody}>
+  const render = () => {
+    return(
+
+      <View style={styles.mbody}>
       <Appbar.Header>
         <View style={styles.searchcontainer}>
           <Appbar.Content />
@@ -84,8 +86,6 @@ const FlatListSrc = () => {
           </View>
         </View>
       </Appbar.Header>
-
-      <ScrollView>
         <View style={styles.catcon}>
           <View style={styles.row}>
             <TouchableOpacity
@@ -152,9 +152,11 @@ const FlatListSrc = () => {
             </TouchableOpacity>
           </View>
         </View>
+        
         <View style={styles.midcon}>
           <Text
             style={{
+
               fontWeight: 700,
               color: "grey",
               fontSize: 16,
@@ -164,17 +166,28 @@ const FlatListSrc = () => {
             All Places
           </Text>
         </View>
+        </View>
+    )
+  }
+ 
+  return (
+   
+        
         <View style={styles.maincontainer}>
           <FlatList
-            nestedScrollEnabled
             blurRadius={90}
             data={data}
             renderItem={renderItem}
             keyExtractor={(item) => item._id.toString()}
+            ListHeaderComponent={render}
           />
         </View>
-      </ScrollView>
-    </View>
+        
+
+
+
+
+   
   );
 };
 
@@ -182,6 +195,7 @@ export default FlatListSrc;
 
 const styles = StyleSheet.create({
   midcon: {
+    marginBottom:5,
     justifyContent: "center",
     height: 30,
     width: 390,
@@ -191,9 +205,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   micon: {
+  
     marginLeft: 10,
-    height: 60,
-    width: 85,
+    height: 40,
+    width: 65,
   },
   icon: {
     height: 100,
@@ -236,13 +251,13 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     backgroundColor: "#A5A5A5",
-    marginLeft: 40,
+    marginLeft: 60,
     width: 240,
     padding: 10,
     height: 45,
-    marginBottom: 1,
+    marginBottom: 7,
     borderRadius: 15,
-    marginTop: 5,
+    marginTop: 3,
   },
   flatlistcontainer: {
     backgroundColor: "#EDEDED",

@@ -2,6 +2,7 @@ import { View, Text, StyleSheet , Image} from 'react-native'
 import React from 'react'
 import { Linking } from 'react-native';
 import ImageSlider from './ImageSlider';
+import { Appbar } from 'react-native-paper';
 
 
 const PlaceInfo = ({route}) => {
@@ -12,14 +13,20 @@ const PlaceInfo = ({route}) => {
     
 
   return (
+    
     <View style={styles.mainbody}>
+      <Appbar style={styles.line}></Appbar>
       <Text style={styles.maintitle}>{item.title} </Text>
-      <Image source={{ uri: item.image}} style={styles.imgstyle} />
+      <Appbar style={styles.line1}></Appbar>
+      <ImageSlider key={item._id} images={imgs} />
+      <Appbar style={styles.line2}></Appbar>
+      <Text style={{fontSize:20}}>Description</Text>
+      <Appbar style={styles.line}></Appbar>
       <Text style={styles.descriptionstyle}>{item.description}</Text>
       <Text style={styles.locaions} onPress={() => Linking.openURL(item.location)}>
       Click For Locaion
       </Text>
-      <ImageSlider key={item._id} images={imgs} />
+      
     </View>
   )
 }
@@ -32,24 +39,48 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     maintitle:{
-        paddingTop:50,
+        textTransform:"capitalize",
+        fontFamily:'Roboto' ,
+        fontWeight:'bold',
+        color:'#343a40',
+        paddingTop:10,
         fontSize:40
     },
-    imgstyle:{
-      marginTop:50,
-      height:200,
-      width:300
-    },
     descriptionstyle:{
-      paddingTop:50,
+      fontFamily:'serif',
+      paddingTop:15,
       width:300,
-      fontSize:15,
+      fontSize:20,
+      textTransform:'capitalize',
+      textAlign:'center',
       color:"grey",
     },
     locaions:{
+      fontFamily:'serif',
+      color:'blue',
       paddingTop:50,
       fontSize:20,
+    },
+    line:{
+      marginTop:10,
+      width:390 ,
+      height:15
+    },
+    line1:{
+      marginTop:10,
+      marginBottom:40,
+      width:390 ,
+      height:15
+    },
+    line2:{
+      marginTop:40,
+      marginBottom:10,
+      width:390 ,
+      height:15
+    },
+    imgslider:{
+      marginTop:20,
+      paddingTop:50
     }
-
 
 }) 
