@@ -66,26 +66,7 @@ const FlatListSrc = () => {
     return(
 
       <View style={styles.mbody}>
-      <Appbar.Header>
-        <View style={styles.searchcontainer}>
-          <Appbar.Content />
-          <View style={styles.topbar}>
-            <Image
-              source={require("../icons/micon.png")}
-              style={styles.micon}
-            />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search by Name"
-              value={search}
-              onChangeText={(txt) => {
-                onSearch(txt);
-                setSearch(txt);
-              }}
-            />
-          </View>
-        </View>
-      </Appbar.Header>
+     
         <View style={styles.catcon}>
           <View style={styles.row}>
             <TouchableOpacity
@@ -171,8 +152,27 @@ const FlatListSrc = () => {
   }
  
   return (
-   
-        
+   <View>
+      <Appbar.Header>
+    <View style={styles.searchcontainer}>
+      <Appbar.Content />
+      <View style={styles.topbar}>
+        <Image
+          source={require("../icons/micon.png")}
+          style={styles.micon}
+        />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search by Name"
+          value={search}
+          onChangeText={(txt) => {
+            onSearch(txt);
+            setSearch(txt);
+          }}
+        />
+      </View>
+    </View>
+  </Appbar.Header>
         <View style={styles.maincontainer}>
           <FlatList
             blurRadius={90}
@@ -182,12 +182,8 @@ const FlatListSrc = () => {
             ListHeaderComponent={render}
           />
         </View>
-        
-
-
-
-
-   
+   </View>
+    
   );
 };
 

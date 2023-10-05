@@ -4,7 +4,7 @@
     "slug": "travel",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/components/icons/micon.png",
+    "icon": "./src/components/icons/micon2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -23,19 +23,19 @@
       }
     },
     "android": {
+      "package": "com.MeetS.landmarkexplorer",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/components/icons/micon2.png",
         "backgroundColor": "#ffffff"
-      },
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSAppTransportSecurity": {
-          "NSAllowsArbitraryLoads": true
-        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "db59c453-32ed-4994-93a7-185ed767fb89"
+      }
     }
   }
 }
