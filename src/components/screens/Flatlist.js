@@ -62,94 +62,7 @@ const FlatListSrc = () => {
     </TouchableOpacity>
   );
 
-  const render = () => {
-    return(
-
-      <View style={styles.mbody}>
-     
-        <View style={styles.catcon}>
-          <View style={styles.row}>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("categoryscreen", {
-                  cat: "hills",
-                  data,
-                })
-              }
-            >
-              <View style={styles.catconobj}>
-                <Image
-                  source={require("../icons/hills.png")}
-                  style={styles.icon}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("categoryscreen", {
-                  cat: "water",
-                  data,
-                })
-              }
-            >
-              <View style={styles.catconobj}>
-                <Image
-                  source={require("../icons/water.png")}
-                  style={styles.icon}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("categoryscreen", {
-                  cat: "historical",
-                  data,
-                })
-              }
-            >
-              <View style={styles.catconobj}>
-                <Image
-                  source={require("../icons/histo.png")}
-                  style={styles.icon}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("categoryscreen", {
-                  cat: "famous",
-                  data,
-                })
-              }
-            >
-              <View style={styles.catconobj}>
-                <Image
-                  source={require("../icons/famous.png")}
-                  style={styles.icon}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-        
-        <View style={styles.midcon}>
-          <Text
-            style={{
-
-              fontWeight: 700,
-              color: "grey",
-              fontSize: 16,
-              alignSelf: "center",
-            }}
-          >
-            All Places
-          </Text>
-        </View>
-        </View>
-    )
-  }
+  
  
   return (
    <View>
@@ -173,13 +86,86 @@ const FlatListSrc = () => {
       </View>
     </View>
   </Appbar.Header>
+          
+  <View style={styles.mbody}>
+     
+     <View style={styles.catcon}>
+       <View style={styles.row}>
+         <TouchableOpacity
+           onPress={() =>
+             navigation.navigate("categoryscreen", {
+               cat: "hills",
+               data,
+             })
+           }
+         >
+           <View style={styles.catconobj}>
+             <Text style={styles.cattext}>Hills</Text>
+           </View>
+         </TouchableOpacity>
+         <TouchableOpacity
+           onPress={() =>
+             navigation.navigate("categoryscreen", {
+               cat: "water",
+               data,
+             })
+           }
+         >
+           <View style={styles.catconobj}>
+             <Text style={styles.cattext}>Water</Text>   
+           </View>
+         </TouchableOpacity>
+       </View>
+       <View style={styles.row}>
+         <TouchableOpacity
+           onPress={() =>
+             navigation.navigate("categoryscreen", {
+               cat: "historical",
+               data,
+             })
+           }
+         >
+           <View style={styles.catconobj}>
+             <Text style={styles.cattext}>Forts</Text>
+           </View>
+         </TouchableOpacity>
+         <TouchableOpacity
+           onPress={() =>
+             navigation.navigate("categoryscreen", {
+               cat: "famous",
+               data,
+             })
+           }
+         >
+           <View style={styles.catconobj}>
+               <Text style={styles.cattext}>Famous</Text>
+           </View>
+         </TouchableOpacity>
+       </View>
+     </View>
+     
+     <View style={styles.midcon}>
+       <Text
+         style={{
+
+           fontWeight: 700,
+           color: "grey",
+           fontSize: 16,
+           alignSelf: "center",
+         }}
+       >
+         All Places
+       </Text>
+     </View>
+     </View>
+
         <View style={styles.maincontainer}>
           <FlatList
             blurRadius={90}
             data={data}
             renderItem={renderItem}
             keyExtractor={(item) => item._id.toString()}
-            ListHeaderComponent={render}
+          
           />
         </View>
    </View>
@@ -190,6 +176,11 @@ const FlatListSrc = () => {
 export default FlatListSrc;
 
 const styles = StyleSheet.create({
+  cattext:{
+    textTransform:"uppercase",
+    fontWeight:"500",
+    fontFamily:"monospace"
+  },
   midcon: {
     marginBottom:5,
     justifyContent: "center",
@@ -203,7 +194,7 @@ const styles = StyleSheet.create({
   micon: {
   
     marginLeft: 10,
-    height: 40,
+    height: 50,
     width: 65,
   },
   icon: {
@@ -215,9 +206,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   catconobj: {
-    marginBottom: 15,
+    marginBottom: 10,
     width: 150,
-    height: 100,
+    height: 40,
     marginHorizontal: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -225,7 +216,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   catcon: {
-    marginTop: 15,
+    marginTop: 10,
     backgroundColor: "#E0E0E0",
     marginHorizontal: 10,
     justifyContent: "center",
@@ -240,6 +231,8 @@ const styles = StyleSheet.create({
   },
   maincontainer: {
     marginTop: 10,
+    flex: 1,
+    overflow: 'hidden',
   },
   container: {
     flex: 1,
@@ -278,7 +271,7 @@ const styles = StyleSheet.create({
   infostyle: {
     marginTop: 10,
     marginLeft: 15,
-    width: 300,
+    width: 250,
   },
   titlestyle: {
     textTransform: "capitalize",
@@ -288,7 +281,8 @@ const styles = StyleSheet.create({
   },
   descriptionstyle: {
     color: "grey",
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: "300",
+    width:"100"
   },
 });

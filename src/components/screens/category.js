@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
   searchcontainer: {
     backgroundColor: "#FDFDFD",
     width: 390,
+    height:60
   },
   maincontainer: {
     marginTop: 10,
@@ -142,10 +143,13 @@ const styles = StyleSheet.create({
   searchInput: {
     backgroundColor: "#A5A5A5",
     marginLeft: 50,
+    height:40,
     width: 250,
     padding: 10,
-    marginBottom: 7,
+    marginBottom: 10,
+    marginTop:5,
     borderRadius: 15,
+    
   },
   flatlistcontainer: {
     backgroundColor: "#EDEDED",
@@ -187,11 +191,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   micon: {
-    height: 60,
-    width: 85,
+    height: 40,
+    width: 55,
   },
   icon: {
-    height: 100,
+    height: 50,
     width: 150,
     resizeMode: "contain",
   },

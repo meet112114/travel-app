@@ -44,39 +44,39 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         color:'#343a40',
         paddingTop:10,
-        fontSize:40
+        fontSize:30
     },
     descriptionstyle:{
       fontFamily:'serif',
       paddingTop:15,
       width:300,
-      fontSize:20,
+      fontSize:15,
       textTransform:'capitalize',
       textAlign:'center',
       color:"grey",
     },
     locaions:{
       fontFamily:'serif',
-      color:'blue',
+      color:'darkblue',
       paddingTop:50,
       fontSize:20,
     },
     line:{
       marginTop:10,
       width:390 ,
-      height:15
+      height:5
     },
     line1:{
       marginTop:10,
-      marginBottom:40,
+      marginBottom:30,
       width:390 ,
-      height:15
+      height:5
     },
     line2:{
       marginTop:40,
       marginBottom:10,
       width:390 ,
-      height:15
+      height:5
     },
     imgslider:{
       marginTop:20,
