@@ -19,21 +19,41 @@ const FlatListSrc = () => {
   const url = "https://travel-app-api-xbrs.onrender.com/getdata";
   const navigation = useNavigation();
   const [search, setSearch] = useState("");
-  const [data, setdata] = useState(data);
+  const [data, setdata] = useState("");
   const [oldData, setOldData] = useState();
+  const [refreshCount, setRefreshCount] = useState(0);
 
-  useEffect(() => {
-    axios
+  const fetchData = async () => {
+    try {
+      axios
       .get(url)
       .then(function (response) {
         // handle response
         setdata(response.data.placedata);
         setOldData(response.data.placedata);
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const autoRefreshData = () => {
+    fetchData();
+
+    // Set a timeout to auto-refresh 2 times if data is not fetched within 1 second
+    setTimeout(() => {
+      if (data.length === 0 && refreshCount < 2) {
+        setRefreshCount(refreshCount + 1);
+        autoRefreshData();
+      }
+    }, 1000);
+  };
+
+  useEffect(() => {
+    autoRefreshData(); // Initial data fetch and auto-refresh
   }, []);
+
+
 
   const onSearch = (text) => {
     if (text == "") {
