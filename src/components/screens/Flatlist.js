@@ -21,7 +21,6 @@ const FlatListSrc = () => {
   const [search, setSearch] = useState("");
   const [data, setdata] = useState("");
   const [oldData, setOldData] = useState();
-  const [refreshCount, setRefreshCount] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -42,8 +41,7 @@ const FlatListSrc = () => {
 
     // Set a timeout to auto-refresh 2 times if data is not fetched within 1 second
     setTimeout(() => {
-      if (data.length === 0 && refreshCount < 2) {
-        setRefreshCount(refreshCount + 1);
+      if (data.length === 0 ) {
         autoRefreshData();
       }
     }, 1000);
