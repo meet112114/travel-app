@@ -16,7 +16,7 @@ import axios from "axios";
 import { Appbar } from "react-native-paper";
 
 const FlatListSrc = () => {
-  const url = "https://travel-app-api-xbrs.onrender.com/getdata";
+  const url = { your backend/server url }
   const navigation = useNavigation();
   const [search, setSearch] = useState("");
   const [data, setdata] = useState("");
